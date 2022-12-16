@@ -14,7 +14,7 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
     let addButton: UIButton = {
         let control = UIButton()
         control.backgroundColor = .blue
-        control.setTitle("Add", for: .normal)
+        control.setTitle(NSLocalizedString("BUTTON_ADD", comment: ""), for: .normal)
         control.setTitleColor(.white, for: .normal)
         control.titleLabel?.textAlignment = .center
         control.layer.cornerRadius = 15
@@ -25,7 +25,7 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
     
     let titleLabel: UILabel = {
         let control = UILabel()
-        control.text = "My meds kit"
+        control.text = NSLocalizedString("TITLE", comment: "")
         control.textAlignment = .left
         control.font = .systemFont(ofSize: 40, weight: .bold)
         control.textColor = .black
@@ -79,15 +79,15 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     private func setupAlertController() -> UIAlertController {
-        let alertController = UIAlertController(title: "New medicine", message: "Enter the name and expiry date of the new medicine", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("NEW_MED_ALERT_TITLE", comment: ""), message: NSLocalizedString("ALERT_MESSAGE", comment: ""), preferredStyle: .alert)
         alertController.addTextField{
             (textField) in
-            textField.placeholder = "Enter the name of the medicine"
+            textField.placeholder = NSLocalizedString("ALERT_NAME_FIELD_PH", comment: "")
         }
         alertController.addTextField{
             (textField) in
             self.dateInputTextField = textField
-            textField.placeholder = "Enter the expiry date"
+            textField.placeholder = NSLocalizedString("ALERT_EXPIRY_FIELD_PH", comment: "")
             textField.inputView = self.datePicker
         }
         
@@ -98,12 +98,12 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
             }
             
             if name != "" && self.date != nil {
-                //self.meds.append(Medicine(name: name, expiryDate: self.date!))
                 let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
                 let newMed = Medicine(context: managedContext)
                 newMed.setValue(name, forKey: #keyPath(Medicine.name))
                 newMed.setValue(self.date, forKey: #keyPath(Medicine.expires))
                 self.meds.append(newMed)
+                self.meds = self.meds.sorted(by: { $0.name ?? "" < $1.name ?? "" })
                 AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -111,7 +111,7 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
             }
         }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON", comment: ""), style: .cancel, handler: nil))
         
         return alertController
     }
@@ -156,8 +156,8 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicineCell
         let currentMed = meds[indexPath.section]
         cell.nameLabel.text = currentMed.name
-        cell.expiryDateLabel.text = currentMed.expires?.formatted(date: .numeric, time: .omitted)
-        // todo colour expiry date
+        //cell.expiryDateLabel.text = currentMed.expires?.formatted(date: .numeric, time: .omitted)
+        cell.expiryDateLabel.text = DateFormatter.localizedString(from: currentMed.expires ?? Date.now, dateStyle: .medium, timeStyle: .none)
         changeExpiryDateLabelColor(label: cell.expiryDateLabel, expiryDate: currentMed.expires)
         
         cell.layer.cornerRadius = 10
@@ -211,9 +211,6 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
         
         titleLabel.pinTop(to: self.view, 60)
         titleLabel.pinLeft(to: self.view, 10)
-        
-        //tableView.pinLeft(to: self.view, 10)
-        //tableView.pinTop(to: self.view, 60)
         
         addButton.pin(to: self.view, [.left: 24, .right: 24])
         addButton.pinBottom(to: self.view, 20)

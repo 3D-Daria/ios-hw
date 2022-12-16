@@ -17,6 +17,7 @@
 		45FD6D06294C5AE50052C844 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD6D05294C5AE50052C844 /* CoreDataStack.swift */; };
 		45FD6D09294C5DE40052C844 /* Medicine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD6D07294C5DE40052C844 /* Medicine+CoreDataClass.swift */; };
 		45FD6D0A294C5DE40052C844 /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD6D08294C5DE40052C844 /* Medicine+CoreDataProperties.swift */; };
+		45FD6D0E294C853C0052C844 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45FD6D10294C853C0052C844 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		45FD6D05294C5AE50052C844 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		45FD6D07294C5DE40052C844 /* Medicine+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataClass.swift"; sourceTree = "<group>"; };
 		45FD6D08294C5DE40052C844 /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		45FD6D0F294C853C0052C844 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		45FD6D11294C856D0052C844 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 		45FD6C8D290D786A0052C844 /* dddavidkoPW2 */ = {
 			isa = PBXGroup;
 			children = (
+				45FD6D0B294C84E00052C844 /* Localization */,
 				45FD6D04294C5AC40052C844 /* CoreData */,
 				45FD6CA4290D7B100052C844 /* Controllers */,
 				45FD6CA3290D7B020052C844 /* Views */,
@@ -111,6 +115,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		45FD6D0B294C84E00052C844 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				45FD6D10294C853C0052C844 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +165,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 45FD6C82290D786A0052C844;
 			productRefGroup = 45FD6C8C290D786A0052C844 /* Products */;
@@ -170,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FD6C98290D786B0052C844 /* Assets.xcassets in Resources */,
+				45FD6D0E294C853C0052C844 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,11 +208,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		45FD6D10294C853C0052C844 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45FD6D0F294C853C0052C844 /* en */,
+				45FD6D11294C856D0052C844 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		45FD6C9D290D786B0052C844 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -260,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
