@@ -123,7 +123,7 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     private func setupTableView() {
-        let rect = CGRect(x: 10, y: 110, width: view.frame.width - 30, height: view.frame.height - 120)
+        let rect = CGRect(x: 10, y: 110, width: view.frame.width - 30, height: view.frame.height - 110 - 40)
         tableView = UITableView(frame: rect)
         tableView.register(MedicineCell.self, forCellReuseIdentifier: cellId)
         tableView.dataSource = self
@@ -216,6 +216,6 @@ final class MedicineViewController: UIViewController, UITableViewDataSource, UIT
         //tableView.pinTop(to: self.view, 60)
         
         addButton.pin(to: self.view, [.left: 24, .right: 24])
-        addButton.pinBottom(to: self.view, 60)
+        addButton.pinBottom(to: self.view, 20)
     }
 }
